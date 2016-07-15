@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="redditApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Reddit Clone</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="app.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body ng-init="addPost=false" ng-controller="redditController">
+  <div class="navbar">
+    <ul class="nav navbar-nav">
+      <li>Reddit Clone</li>
+      <li ng-click="view.addPostClick()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Post</li>
+      <li><input type="text" placeholder="Search"></li>
+      <li>Sort by:
+        <select name="sortBy" id="sortBy" ng-model="sortBy" value="Votes">
+          <option value="Date">Date</option>
+          <option value="Title">Title</option>
+          <option value="Votes" ng-selected="true">Votes</option>
+        </select>
+      </li>
+    </ul>
+  </div>
+  <div ng-show="addPost">
+    <form ng-submit="view.addPost()">
+      <label for="title">Title</label>
+      <input type="text" name="title" ng-model="post.title">
+      <label for="author">Author</label>
+      <input type="text" name="author" ng-model="post.author">
+      <label for="imageURL">Image URL</label>
+      <input type="text" name="imageURL" ng-model="post.imageURL">
+      <label for="description">Description</label>
+      <input type="text" name="description" ng-model="post.description">
+      <input type="submit" value="Submit Post">
+    </form>
+  </div>
+  <div ng-repeat="post in view.postArray">
+    <div class="post">
+      <img ng-src="{{post.imageURL}}" alt="user image">
+      <h3>{{post.title}} | <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span><span class="upvotes">{{post.upvotes}}</span></h3>
+      <p class="authorName">By {{post.author}}</p>
+      <p>{{post.description}}</p>
+
+    </div>
+  </div>
+</body>
+</html>
