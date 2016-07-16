@@ -65,4 +65,9 @@ app.controller("redditController", function($scope){
     post.addComment=false;
     console.log(post);
   };
+  $scope.view.orderPostArray=function(param){
+    $scope.view.postArray.sort(function(a,b){
+      return a[param]-b[param];
+    });
+  };
 });

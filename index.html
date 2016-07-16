@@ -18,10 +18,10 @@
       <li ng-click="view.addPostClick()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Post</li>
       <li><input type="text" placeholder="Search"></li>
       <li>Sort by:
-        <select name="sortBy" id="sortBy" ng-model="view.sortBy">
-          <option value="post.date">Date</option>
-          <option value="post.title">Title</option>
-          <option value="post.upvotes" ng-selected="true">Votes</option>
+        <select name="sortBy" id="sortBy" ng-model="view.sortBy" ng-click="view.orderPostArray(view.sortBy)">
+          <option value="date">Date</option>
+          <option value="title">Title</option>
+          <option value="upvotes" ng-selected="true">Votes</option>
         </select>
       </li>
     </ul>
