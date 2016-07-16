@@ -16,7 +16,7 @@
     <ul class="nav navbar-nav">
       <li>Reddit Clone</li>
       <li ng-click="view.addPostClick()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Post</li>
-      <li><input type="text" placeholder="Search"></li>
+      <li><input type="text" ng-model="searchBox" placeholder="Search"></li>
       <li>Sort by:
         <select name="sortBy" id="sortBy" ng-model="view.sortBy" ng-click="view.orderPostArray(view.sortBy)">
           <option value="date">Date</option>
@@ -39,7 +39,7 @@
       <input type="submit" value="Submit Post">
     </form>
   </div>
-  <div ng-repeat="post in view.postArray | orderBy: view.sortBy">
+  <div ng-repeat="post in view.postArray | orderBy: view.sortBy | filter: searchBox">
     <div class="post">
       <img ng-src="{{post.imageURL}}" alt="user image">
       <h3>{{post.title}} | <span class="glyphicon glyphicon-arrow-up" aria-hidden="true" ng-click="post.upvotes = post.upvotes+1"></span><span class="glyphicon glyphicon-arrow-down" ng-click="post.upvotes = post.upvotes-1" aria-hidden="true"></span><span class="upvotes" ng-class="{'green': post.upvotes>0, 'red': post.upvotes<0}">{{post.upvotes}}</span></h3>

@@ -1,6 +1,7 @@
 .post {
   border: 5px;
   background-color: tan;
+  min-height: 210px;
 }
 img {
   height: 200px;
